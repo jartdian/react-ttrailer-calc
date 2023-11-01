@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Inputs( {trailer_length_size} ) {
+export default function Inputs( {trailer_length_size} : {trailer_length_size:number} ) {
 
   const [countBlocksStraight, setCountBlocksStraight] = useState('');
   const straightBlocksAsNumber = Number(countBlocksStraight);
