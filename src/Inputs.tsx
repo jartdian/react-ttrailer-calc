@@ -67,7 +67,7 @@ export default function Inputs({
       ? closestMultipleOfTwo(sidewaysEurosAsNumber) * 80
       : (closestMultipleOfTwo(sidewaysEurosAsNumber) * 80) / 2;
 
-  let remainingTrailerSize: number = trailer_length_size -
+  const remainingTrailerSize: number = trailer_length_size -
   (closestEuroLength +
     closestEuroWidth +
     closestBlockWidth +
