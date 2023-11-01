@@ -10,12 +10,17 @@ function App() {
       </h1>
       <div
         className="container"
-        style={{ display: 'flex', gap: '5em', justifyContent: 'space-evenly' }}
       >
         <div className="semi-trailer">
+        <u>
+        <h3 style={{ color: 'lightgreen', textAlign: 'center' }}>Semi-trailer</h3>
+      </u>
           <Inputs trailer_length_size={1360} />
         </div>
         <div className="swap-body">
+        <u>
+        <h3 style={{ color: 'lightgreen', textAlign: 'center' }}>Swap-body</h3>
+      </u>
           <Inputs trailer_length_size={782} />
         </div>
       </div>
