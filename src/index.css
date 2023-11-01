@@ -33,3 +33,12 @@ p {
   display: inline;
   padding-right: .95em;
 }
+input {
+  width: 2.5em
+}
+.red-text {
+  color: red;
+}
+.green-text {
+  color: green;
+}

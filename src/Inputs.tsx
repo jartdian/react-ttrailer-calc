@@ -1,17 +1,20 @@
-import './App.css'
-import { useState } from 'react';
+import "./App.css";
+import { useState } from "react";
 
-export default function Inputs( {trailer_length_size} : {trailer_length_size:number} ) {
-
-  const [countBlocksStraight, setCountBlocksStraight] = useState('');
+export default function Inputs({
+  trailer_length_size,
+}: {
+  trailer_length_size: number;
+}) {
+  const [countBlocksStraight, setCountBlocksStraight] = useState("");
   const straightBlocksAsNumber = Number(countBlocksStraight);
-  const [countBlocksSideways, setCountBlocksSideways] = useState('');
+  const [countBlocksSideways, setCountBlocksSideways] = useState("");
   const sidewaysBlocksAsNumber = Number(countBlocksSideways);
-  const [countEurosStraight, setCountEurosStraight] = useState('');
+  const [countEurosStraight, setCountEurosStraight] = useState("");
   const straightEurosAsNumber = Number(countEurosStraight);
-  const [countEurosSideways, setCountEurosSidways] = useState('');
+  const [countEurosSideways, setCountEurosSidways] = useState("");
   const sidewaysEurosAsNumber = Number(countEurosSideways);
- 
+
   function closestMultipleOfTwo(num: number) {
     if (num === 0) {
       return 0;
@@ -64,91 +67,95 @@ export default function Inputs( {trailer_length_size} : {trailer_length_size:num
       ? closestMultipleOfTwo(sidewaysEurosAsNumber) * 80
       : (closestMultipleOfTwo(sidewaysEurosAsNumber) * 80) / 2;
 
+  let remainingTrailerSize: number = trailer_length_size -
+  (closestEuroLength +
+    closestEuroWidth +
+    closestBlockWidth +
+    closestBlockLength);
+
   return (
     <>
-      
       <p>
         <u>Blocks</u>
       </p>
       <div>
+        <h5 className="straight-heading">Straight</h5>
+        <input
+          value={straightBlocksAsNumber}
+          name="blocks-straight"
+          onChange={(e) => setCountBlocksStraight(e.target.value)}
+          type="number"
+        />{" "}
+        {closestBlockLength} cm
+      </div>
 
-      <h5 className='straight-heading' >Straight</h5>
-      <input
-        style={{ width: '2.5em' }}
-        type="number"
-        name="blocks-straight"
-        value={straightBlocksAsNumber}
-        onChange={(e) => setCountBlocksStraight(e.target.value)}
-        />{' '}
-      {closestBlockLength} cm
-        </div>
-      
       <div>
-
-      <h5 className='sideways-heading'>Sideways</h5>
-      <input
-        style={{ width: '2.5em' }}
-        type="number"
-        name="blocks-sideways"
-        value={sidewaysBlocksAsNumber}
-        onChange={(e) => setCountBlocksSideways(e.target.value)}
-        />{' '}
-      {closestBlockWidth} cm
-        </div>
+        <h5 className="sideways-heading">Sideways</h5>
+        <input
+          type="number"
+          name="blocks-sideways"
+          value={sidewaysBlocksAsNumber}
+          onChange={(e) => setCountBlocksSideways(e.target.value)}
+        />{" "}
+        {closestBlockWidth} cm
+      </div>
       <hr />
       <p>
         <u>Euros</u>
       </p>
       <div>
+        <h5 style={{ margin: "0", display: "inline", paddingRight: "1.5em" }}>
+          Straight
+        </h5>
+        <input
+          type="number"
+          name="euros-straight"
+          value={straightEurosAsNumber}
+          onChange={(e) => setCountEurosStraight(e.target.value)}
+        />{" "}
+        {closestEuroLength} cm
+      </div>
 
-      <h5 style={{margin: '0', display: 'inline', paddingRight: '1.5em'}}>Straight</h5>
-      <input
-        style={{ width: '2.5em' }}
-        type="number"
-        name="euros-straight"
-        value={straightEurosAsNumber}
-        onChange={(e) => setCountEurosStraight(e.target.value)}
-        />{' '}
-      {closestEuroLength} cm
-        </div>
-      
       <div>
-        
-      <h5 style={{margin: '0', display: 'inline', paddingRight: '.95em'}}>Sideways</h5>
-      <input
-        style={{ width: '2.5em'}}
-        type="number"
-        name="euros-straight"
-        value={sidewaysEurosAsNumber}
-        onChange={(e) => setCountEurosSidways(e.target.value)}
-        />{' '}
-      {closestEuroWidth} cm
-        </div>
+        <h5 style={{ margin: "0", display: "inline", paddingRight: ".95em" }}>
+          Sideways
+        </h5>
+        <input
+          type="number"
+          name="euros-straight"
+          value={sidewaysEurosAsNumber}
+          onChange={(e) => setCountEurosSidways(e.target.value)}
+        />{" "}
+        {closestEuroWidth} cm
+      </div>
       <hr />
       <p>
-        Total N of Palettes:{' '}
+        Total N of Palettes:{" "}
         {straightBlocksAsNumber +
           straightEurosAsNumber +
           sidewaysBlocksAsNumber +
           sidewaysEurosAsNumber}
       </p>
-      <p  style={{width: '13em'}}>
-        Total Length of Palettes:{' '}
+      <p style={{ width: "13em" }}>
+        Total Length of Palettes:{" "}
         {closestEuroLength +
           closestEuroWidth +
           closestBlockWidth +
           closestBlockLength}
       </p>
-      <p>
-        Remaining Length:{' '}
-        {trailer_length_size -
-          (closestEuroLength +
-            closestEuroWidth +
-            closestBlockWidth +
-            closestBlockLength)}{' '}
+      {remainingTrailerSize > 0 ? 
+      <p className="green-text">
+        Remaining Length:{' '}{remainingTrailerSize}{' '}
         cm
       </p>
+      :
+      <p className="red-text">
+      Remaining Length:{" "}
+      {" "}
+      {remainingTrailerSize}{' '}cm
+    </p>
+      }
+      
     </>
   );
 }
-
