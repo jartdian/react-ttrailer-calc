@@ -2,6 +2,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  font-size: 2em;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -41,4 +42,15 @@ input {
 }
 .green-text {
   color: green;
+}
+
+/* add a media-query for mobile devices below 600px */
+@media (max-width: 600px) {
+  :root {
+    font-size: 1.3em;
+  }
+  .container {
+    flex-wrap: wrap;
+    gap: 1.5em;
+  }
 }
