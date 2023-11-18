@@ -39,6 +39,8 @@ export default function Inputs({
     }
   }
 
+  const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => event.target.select();
+
   const closestBlockWidth =
     closestMultipleOfTwo(sidewaysBlocksAsNumber) === 0
       ? 0
@@ -86,6 +88,7 @@ export default function Inputs({
           onChange={(e) => setCountBlocksStraight(e.target.value)}
           type="number"
           inputMode="numeric"
+          onFocus={handleFocus}
         />{" "}
         {closestBlockLength} cm
       </div>
@@ -98,6 +101,7 @@ export default function Inputs({
           name="blocks-sideways"
           value={sidewaysBlocksAsNumber}
           onChange={(e) => setCountBlocksSideways(e.target.value)}
+          onFocus={handleFocus}
         />{" "}
         {closestBlockWidth} cm
       </div>
@@ -115,6 +119,7 @@ export default function Inputs({
           name="euros-straight"
           value={straightEurosAsNumber}
           onChange={(e) => setCountEurosStraight(e.target.value)}
+          onFocus={handleFocus}
         />{" "}
         {closestEuroLength} cm
       </div>
@@ -129,6 +134,7 @@ export default function Inputs({
           name="euros-straight"
           value={sidewaysEurosAsNumber}
           onChange={(e) => setCountEurosSidways(e.target.value)}
+          onFocus={handleFocus}
         />{" "}
         {closestEuroWidth} cm
       </div>
