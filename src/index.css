@@ -27,7 +27,7 @@ p {
 .straight-heading {
   margin: 0;
   display: inline;
-  padding-right: 1.5em;
+  padding-right: 11.9%
 }
 .sideways-heading {
   margin: 0;
@@ -35,7 +35,10 @@ p {
   padding-right: .95em;
 }
 input {
-  width: 2.5em
+  width: 1.8em;
+  border-radius: 4px;
+  font-size: 1em;
+  padding-left: 5px;
 }
 .red-text {
   color: red;
@@ -43,7 +46,12 @@ input {
 .green-text {
   color: green;
 }
-
+.blue-text {
+  color: rgb(111, 116, 241);
+}
+.brown-text {
+  color: rgb(181, 140, 82)
+}
 /* add a media-query for mobile devices below 600px */
 @media (max-width: 600px) {
   :root {
@@ -52,5 +60,9 @@ input {
   .container {
     flex-wrap: wrap;
     gap: 1.5em;
+  }
+  input {
+    font-size: .9em;
+    width: 2.2em;
   }
 }

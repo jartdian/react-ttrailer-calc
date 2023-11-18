@@ -76,23 +76,25 @@ export default function Inputs({
   return (
     <>
       <p>
-        <u>Blocks</u>
+        <u className="blue-text">Blocks</u>
       </p>
       <div>
-        <h5 className="straight-heading">Straight</h5>
+        <div className="straight-heading">Straight</div>
         <input
           value={straightBlocksAsNumber}
           name="blocks-straight"
           onChange={(e) => setCountBlocksStraight(e.target.value)}
           type="number"
+          inputMode="numeric"
         />{" "}
         {closestBlockLength} cm
       </div>
 
       <div>
-        <h5 className="sideways-heading">Sideways</h5>
+        <div className="sideways-heading">Sideways</div>
         <input
           type="number"
+          inputMode="numeric"
           name="blocks-sideways"
           value={sidewaysBlocksAsNumber}
           onChange={(e) => setCountBlocksSideways(e.target.value)}
@@ -101,14 +103,15 @@ export default function Inputs({
       </div>
       <hr />
       <p>
-        <u>Euros</u>
+        <u className="brown-text">Euros</u>
       </p>
       <div>
-        <h5 style={{ margin: "0", display: "inline", paddingRight: "1.5em" }}>
+        <div className="straight-heading">
           Straight
-        </h5>
+        </div>
         <input
           type="number"
+          inputMode="numeric"
           name="euros-straight"
           value={straightEurosAsNumber}
           onChange={(e) => setCountEurosStraight(e.target.value)}
@@ -117,11 +120,12 @@ export default function Inputs({
       </div>
 
       <div>
-        <h5 style={{ margin: "0", display: "inline", paddingRight: ".95em" }}>
+        <div className="sideways-heading">
           Sideways
-        </h5>
+        </div>
         <input
           type="number"
+          inputMode="numeric"
           name="euros-straight"
           value={sidewaysEurosAsNumber}
           onChange={(e) => setCountEurosSidways(e.target.value)}
@@ -130,19 +134,19 @@ export default function Inputs({
       </div>
       <hr />
       <p>
-        Total N of Palettes:{" "}
+        Number of Palettes:{" "}
         {straightBlocksAsNumber +
           straightEurosAsNumber +
           sidewaysBlocksAsNumber +
           sidewaysEurosAsNumber}
       </p>
       <p style={{ width: "13em" }}>
-        Total Length of Palettes:{" "}
+        Overal Length:{" "}
         {closestEuroLength +
           closestEuroWidth +
           closestBlockWidth +
           closestBlockLength}
-      </p>
+      {" "}cm</p>
       {remainingTrailerSize > 0 ? 
       <p className="green-text">
         Remaining Length:{' '}{remainingTrailerSize}{' '}
